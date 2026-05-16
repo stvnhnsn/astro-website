@@ -1,0 +1,45 @@
+---
+import { BUSINESS_NAME } from "../site-config";
+
+// Get the current path
+const currentPath = Astro.url.pathname;
+
+// Function to check if a link is active
+const isActive = (path: string) => currentPath === path || (path === "/" && currentPath === "/index");
+---
+<nav>
+  <a href="/">{BUSINESS_NAME}</a>
+  <ul>
+    <li><a href="/" class:list={{ active: isActive("/") }}>Home</a></li>
+    <li><a href="/services" class:list={{ active: isActive("/services") }}>Services</a></li>
+    <li><a href="/gallery" class:list={{ active: isActive("/gallery") }}>Gallery</a></li>
+    <li><a href="/contact" class:list={{ active: isActive("/contact") }}>Contact</a></li>
+  </ul>
+</nav>
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333333;
+    color: white;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  nav ul a {
+    color: white;
+    text-decoration: none;
+  }
+  nav ul a.active {
+    color: var(--color-accent);
+  }
+</style>

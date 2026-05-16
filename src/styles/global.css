@@ -1,0 +1,88 @@
+/* Define variables at the top for easy updates later */
+:root {
+  --font-heading: "DM Sans", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --color-charcoal: #333333;
+  --color-slate: #708090;
+  --color-steely-blue: #2C4763;
+  --color-white: #ffffff;
+  --color-off-white: #f4f4f4;
+  --color-accent: #ff9800; /* Subtle safety orange */
+}
+
+/* Global Reset & Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-off-white);
+  color: var(--color-charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-charcoal);
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.75em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+/* Ensure form elements don't default back to default font (i.e., Times New Roman) */
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+/* Main Content Padding */
+main {
+  padding: 2rem 0;
+}
+
+/* Mobile-first adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-section {
+    padding: 0 1rem;
+  }
+  
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,62 @@
+---
+// 1. Import the Image component for optimization
+import { Image } from 'astro:assets';
+import MainLayout from '../layouts/MainLayout.astro';
+
+// 2. Import all images from the gallery folder
+// We use 'eager: true' so they are available immediately
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/*.{jpeg,jpg,png,gif}', { eager: true });
+const galleryImages = Object.values(images).map(img => img.default);
+---
+
+<MainLayout title="Gallery">
+  <section class="gallery-container">
+    <div class="grid">
+      {galleryImages.map((image) => (
+        <a href={image.src} class="glightbox" data-gallery="construction">
+          <Image 
+            src={image} 
+            alt="Construction Project" 
+            width={400} 
+            height={300}
+            class="thumb"
+          />
+        </a>
+      ))}
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  import GLightbox from "glightbox";
+  import "glightbox/dist/css/glightbox.css";
+  
+  const lightbox = GLightbox({
+    selector: ".glightbox",
+    touchNavigation: true,
+    loop: true,
+  });
+</script>
+
+<style>
+  .gallery-container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .thumb {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: transform 0.2s;
+  }
+  .thumb:hover {
+    transform: scale(1.02);
+  }
+</style>

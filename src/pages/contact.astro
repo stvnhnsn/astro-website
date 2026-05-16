@@ -1,0 +1,251 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
+---
+
+<MainLayout title="Contact Us">
+  <main>
+    <section class="contact-hero">
+      <h1>Get in Touch</h1>
+      <p>Please contact us if you would like a quote or have any questions.</p>
+      <hr class="hero-divider" />
+    </section>
+    <section class="contact-form-section">
+      <form class="contact-form" id="contactForm">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Name"
+          required
+          aria-label="Name"
+        />
+        <div class="error-message" id="name-error"></div>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+          aria-label="Email"
+          autocapitalize="none"
+          autocorrect="off"
+        />
+        <div class="error-message" id="email-error"></div>
+
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone"
+          aria-label="Phone (###) ###-####)"
+          title="Phone number must be in (###) ###-#### format"
+        />
+        <div class="error-message" id="phone-error"></div>
+
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          placeholder="Message"
+          required
+          aria-label="Message"></textarea>
+        <div class="error-message" id="message-error"></div>
+
+        <button type="submit" class="cta-button">Send Message</button>
+      </form>
+      <p class="non-confidential-note">
+        Messages sent through this form are NOT confidential. Please avoid
+        sending private or confidential information.
+      </p>
+      <div class="contact-info">
+        <p>Email: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></p>
+        <p>Phone: <a href="tel:{CONTACT_PHONE}">{CONTACT_PHONE}</a></p>
+      </div>
+    </section>
+  </main>
+</MainLayout>
+
+<style>
+  .contact-hero {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .contact-hero h1 {
+    font-size: 2.5rem;
+    color: var(--color-charcoal);
+  }
+  .contact-hero p {
+    color: var(--color-slate);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+  .contact-form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--color-slate);
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  .contact-form textarea {
+    resize: vertical;
+  }
+  .cta-button {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start; /* Align button to the start of the flex container */
+  }
+  .cta-button:hover {
+    background-color: var(--color-accent);
+    filter: brightness(1.1);
+  }
+  .contact-info {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--color-slate);
+  }
+  .contact-info a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+
+  .hero-divider {
+    border: none;
+    border-top: 1px solid var(--color-charcoal);
+    width: 25%; /* Adjust as needed */
+    margin: 1.5rem auto; /* Center the line and provide vertical spacing */
+  }
+
+  .non-confidential-note {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-slate);
+    text-align: center;
+    margin-top: 1rem;
+    max-width: 80%;
+    line-height: 1.4;
+  }
+</style>
+
+<script>
+  import IMask from "imask";
+
+  const form = document.getElementById("contactForm");
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
+  const emailInput = document.getElementById("email") as HTMLInputElement;
+
+  if (form && phoneInput && emailInput) {
+    // Function to display error messages
+    function displayError(fieldId, message) {
+      const errorElement = document.getElementById(`${fieldId}-error`);
+      if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.color = "red";
+        errorElement.style.fontSize = "0.8rem";
+        errorElement.style.marginTop = "0.2rem";
+      }
+    }
+
+    // Function to clear error messages
+    function clearError(fieldId) {
+      const errorElement = document.getElementById(`${fieldId}-error`);
+      if (errorElement) {
+        errorElement.textContent = "";
+      }
+    }
+
+    // IMask for phone number input
+    const phoneMask = IMask(phoneInput, {
+      mask: "(000) 000-0000",
+    });
+
+    phoneInput.addEventListener("blur", () => validateField(phoneInput));
+
+    emailInput.addEventListener("blur", () => validateField(emailInput));
+
+    // Validation logic for fields with specific patterns or types (phone and email)
+    function validateField(field) {
+      clearError(field.id);
+      if (field.id === "phone" && field.value) {
+        if (!phoneMask.masked.isComplete) {
+          displayError(field.id, "Phone number must be in (###) ###-#### format.");
+        }
+      } else if (field.id === "email" && field.value) {
+        // .checkValidity() runs the browser's native HTML5 email validation engine
+        if (!emailInput.checkValidity()) {
+          displayError(field.id, "Please enter a valid email address.");
+        }
+      }
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const requiredFields = ["name", "email", "message"];
+      let isValid = true;
+
+      requiredFields.forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          clearError(fieldId);
+          if (!field.value.trim()) {
+            displayError(fieldId, "This field is required.");
+            isValid = false;
+          }
+        }
+      });
+
+      // Validate phone and email on submit if they have values
+      validateField(phoneInput);
+      validateField(emailInput);
+
+      if (isValid) {
+        // Form submission logic here (e.g., fetch API)
+        console.log(
+          "Form submitted successfully for " +
+            nameInput.value +
+            ", " +
+            emailInput.value +
+            ", " +
+            phoneInput.value,
+        );
+        alert(
+          "Thank you for your message. " +
+            BUSINESS_NAME +
+            " will get in touch with you.",
+        );
+        form.reset();
+      }
+    });
+  }
+</script>

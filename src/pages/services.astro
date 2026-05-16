@@ -1,0 +1,71 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+// Placeholder descriptions (Update these in your site-config.ts eventually)
+const services = [
+  { 
+    title: "Remodeling", 
+    desc: "Transform your existing spaces into the home of your dreams with our comprehensive remodeling services. From kitchens and bathrooms to full home renovations, we handle every detail with commitment and care.",
+    icon: "" 
+  },
+  { 
+    title: "Cabinet Building", 
+    desc: "Custom-built cabinets designed for kitchens, baths, offices and more with premium finishes. We craft beautiful and functional cabinetry designed to your specifications. We deliver high quality with attention to detail.",
+    icon: "" 
+  },
+  { 
+    title: "Expert Carpentry", 
+    desc: "Bring your unique visions to life with our specialized carpentry services. Whether it's custom furniture, intricate millwork or unique architectural elements, our skilled craftsmen deliver superior artistry and precision.",
+    icon: "" 
+  }
+];
+---
+
+<MainLayout title="Our Services">
+  <section class="services-page">
+    <div class="services-hero">
+      <h1>Construction Services</h1>
+      <p>Quality craftsmanship and professional reliability for every project.</p>
+    </div>
+
+    <div class="services-grid">
+      {services.map(service => (
+        <ServiceCard 
+          title={service.title} 
+          description={service.desc} 
+          icon={service.icon} 
+        />
+      ))}
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .services-page {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+  }
+
+  .services-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .services-hero h1 {
+    font-size: 2.5rem;
+    color: var(--color-charcoal);
+  }
+  .services-hero p {
+    color: var(--color-slate);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>
