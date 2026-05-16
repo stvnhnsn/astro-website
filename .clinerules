@@ -1,0 +1,21 @@
+# Astro Construction Business Protocol
+
+## Project Identity & Constants
+- All business identity data (Name, Phone, Email, Address) must be stored in a single config file (e.g., `src/site-config.ts`) and imported into components.
+
+## Technical Stack (Strictly FOSS)
+- **Framework:** Astro (Latest Stable).
+- **Styling:** Vanilla CSS (Modular). No heavy frameworks.
+- **Gallery:** Automated image discovery from `src/assets/gallery/`.
+- **Lightbox:** Use a lightweight, FOSS vanilla JS library (e.g., GLightbox) or a simple CSS/JS implementation.
+
+## Design Philosophy
+- **Palette:** Neutral construction (Slate Gray, Off-White, Charcoal, with a subtle Safety Orange or Gold accent).
+- **Layout:** Professional, high-contrast, and mobile-first.
+- **Components:** Use functional, reusable components for Cards and Sections.
+
+## Execution Rules
+1. **Context Usage:** Use your 1M token window to ensure the `site-config.ts` constants are applied consistently across all pages.
+2. **Gallery Logic:** Dynamically map through images in the assets folder. Do not hardcode image lists.
+3. **Contact Form:** Use standard HTML5 validation or IMask.
+4. **Documentation:** Comment all logic, especially the automated image import script.

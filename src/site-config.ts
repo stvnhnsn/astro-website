@@ -1,0 +1,4 @@
+export const BUSINESS_NAME = "Stone Ridge Designs";
+export const CONTACT_EMAIL = "info@stoneridgedesigns.com";
+export const CONTACT_PHONE = "(555) 123-4567";
+export const BUSINESS_ADDRESS = "123 Main St, Anytown USA";
