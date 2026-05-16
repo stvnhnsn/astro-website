@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { BUSINESS_NAME } from "../site-config";
 ---
 <MainLayout title="Home">
   <main>
@@ -9,7 +10,7 @@ import MainLayout from "../layouts/MainLayout.astro";
       <a href="/contact" class="cta-button">Get a Free Estimate</a>
     </section>
     <section class="about">
-      <h2>About Stone Ridge Designs</h2>
+      <h2>About {BUSINESS_NAME}</h2>
       <p>We are a dedicated team of craftsmen passionate about bringing your construction and woodworking visions to life. With years of experience and a commitment to quality, we specialize in remodeling, custom cabinet building, and intricate specialized woodworking projects.</p>
     </section>
   </main>
