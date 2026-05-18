@@ -59,10 +59,6 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
         Messages sent through this form are NOT confidential. Please avoid
         sending private or confidential information.
       </p>
-      <div class="contact-info">
-        <p>Email: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></p>
-        <p>Phone: <a href="tel:{CONTACT_PHONE}">{CONTACT_PHONE}</a></p>
-      </div>
     </section>
   </main>
 </MainLayout>
@@ -125,19 +121,6 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
     background-color: var(--color-accent);
     filter: brightness(1.1);
   }
-  .contact-info {
-    margin-top: 2rem;
-    text-align: center;
-    color: var(--color-slate);
-  }
-  .contact-info a {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-  .contact-info a:hover {
-    text-decoration: underline;
-  }
-
   .hero-divider {
     border: none;
     border-top: 1px solid var(--color-charcoal);
