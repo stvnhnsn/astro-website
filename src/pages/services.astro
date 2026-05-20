@@ -27,8 +27,8 @@ const services = [
     <div class="services-hero">
       <h1>Construction Services</h1>
       <p>Quality craftsmanship and professional reliability for every project.</p>
+      <hr class="services-hero-divider" />
     </div>
-
     <div class="services-grid">
       {services.map(service => (
         <ServiceCard 
@@ -47,12 +47,10 @@ const services = [
     margin: 4rem auto;
     padding: 0 2rem;
   }
-
   .services-hero {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
   }
-
   .services-hero h1 {
     font-size: 2.5rem;
     color: var(--color-charcoal);
@@ -62,7 +60,12 @@ const services = [
     font-size: 1.1rem;
     margin-top: 0.5rem;
   }
-
+  .services-hero-divider {
+    border: none;
+    border-top: 1px solid var(--color-charcoal);
+    width: 20%; /* Adjust as needed */
+    margin: 1.5rem auto; /* Center the line and provide vertical spacing */
+  }
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

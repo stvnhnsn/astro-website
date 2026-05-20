@@ -1,5 +1,5 @@
 ---
-import { BUSINESS_NAME, CONTACT_PHONE } from "../site-config";
+import { BUSINESS_NAME, CONTACT_PHONE, CONTACT_CITY_STATE } from "../site-config";
 
 // Get the current path
 const currentPath = Astro.url.pathname;
@@ -20,9 +20,13 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
         <li><a href="/contact" class:list={{ active: isActive("/contact") }}>Contact</a></li>
       </ul>
     </nav>
-    <a href={`tel:${CONTACT_PHONE.replace(/[^\d]/g, "")}`} class="contact-phone">
-      {CONTACT_PHONE}
-    </a>
+    <div class="contact-info">
+      <span class="contact-text">Call or Text Us</span>
+      <a href={`tel:${CONTACT_PHONE.replace(/[^\d]/g, "")}`} class="contact-phone-number">
+        {CONTACT_PHONE}
+      </a>
+      <span class="contact-location">{CONTACT_CITY_STATE}</span>
+    </div>
   </div>
 </header>
 
@@ -68,7 +72,7 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
   .main-nav ul {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     margin: 0;
     padding: 0;
   }
@@ -78,7 +82,7 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
     text-decoration: none;
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
     padding: 0.5rem 0;
     position: relative;
@@ -89,17 +93,36 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
     color: var(--color-accent);
   }
 
-  .contact-phone {
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: var(--font-body);
+    line-height: 1.2;
+  }
+
+  .contact-text {
+    font-size: 0.85rem;
+    color: var(--color-off-white);
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-phone-number {
     color: var(--color-accent);
     text-decoration: none;
-    font-family: var(--font-body);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
   }
 
-  .contact-phone:hover {
+  .contact-phone-number:hover {
     color: var(--color-white);
+  }
+
+  .contact-location {
+    font-size: 0.85rem;
+    color: var(--color-off-white);
+    margin-top: 0.1rem;
   }
 
   /* Mobile Responsiveness */
@@ -112,7 +135,7 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
 
     .business-name {
       flex-basis: 100%;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-size: 1.5rem;
     }
 
@@ -120,11 +143,12 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
       flex-direction: column;
       gap: 0.5rem;
       flex-basis: 100%;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .contact-phone {
+    .contact-info {
       flex-basis: 100%;
+      align-items: center;
       font-size: 1rem;
     }
   }

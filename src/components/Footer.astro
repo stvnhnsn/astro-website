@@ -1,23 +1,40 @@
 ---
-import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
+import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_CITY_STATE } from "../site-config";
 ---
 <footer>
-  <p>&copy; {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.</p>
-  <p>Contact: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a> | {CONTACT_PHONE}</p>
+  <div class="footer-content">
+    <p class="copyright">&copy; {new Date().getFullYear()} {BUSINESS_NAME}</p>
+  </div>
 </footer>
+
 <style>
   footer {
-    text-align: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     background-color: #333333;
     color: white;
     margin-top: 1rem;
   }
-  footer a {
-    color: white;
-    text-decoration: none;
+
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  footer a:hover {
-    text-decoration: underline;
+
+  .copyright {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .copyright {
+      text-align: center;
+    }
   }
 </style>
