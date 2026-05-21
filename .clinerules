@@ -15,7 +15,7 @@
 - **Components:** Use functional, reusable components for Cards and Sections.
 
 ## Execution Rules
-1. **Context Usage:** Use your 1M token window to ensure the `site-config.ts` constants are applied consistently across all pages.
+1. **Context Usage:** Use your 1M token window to ensure the `src/site-config.ts` constants are applied consistently across all pages.
 2. **Gallery Logic:** Dynamically map through images in the assets folder. Do not hardcode image lists.
 3. **Contact Form:** Use standard HTML5 validation or IMask.
 4. **Documentation:** Comment all logic, especially the automated image import script. In CSS or JS comments, do not escape special characters such as quotes.
