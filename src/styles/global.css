@@ -56,11 +56,11 @@ button, input, textarea, select {
 
 /* Main Content Padding */
 main {
-  padding: 2rem 0;
+  padding: 0;
 }
 
 .content-wrapper {
-  padding-top: 4rem; /* Adjust this value based on your header's height */
+  padding-top: 4.5rem; /* Adjust this value based on your header's height */
 }
 
 

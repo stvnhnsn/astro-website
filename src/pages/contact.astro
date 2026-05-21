@@ -4,7 +4,7 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
 ---
 
 <MainLayout title="Contact Us">
-  <main>
+  <main class="contact-page-main">
     <section class="contact-hero">
       <h1>Get in Touch</h1>
       <p>Please contact us if you would like a quote or have any questions.</p>
@@ -66,6 +66,7 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
 <style>
   .contact-hero {
     text-align: center;
+    margin-top: 0;
     margin-bottom: 1rem;
   }
   .contact-hero h1 {
@@ -141,14 +142,14 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
 <script>
   import IMask from "imask";
 
-  const form = document.getElementById("contactForm");
-  const nameInput = document.getElementById("name");
-  const phoneInput = document.getElementById("phone");
+  const form = document.getElementById("contactForm") as HTMLFormElement;
+  const nameInput = document.getElementById("name") as HTMLInputElement;
+  const phoneInput = document.getElementById("phone") as HTMLInputElement;
   const emailInput = document.getElementById("email") as HTMLInputElement;
 
-  if (form && phoneInput && emailInput) {
+  if (form && nameInput && phoneInput && emailInput) {
     // Function to display error messages
-    function displayError(fieldId, message) {
+    function displayError(fieldId: string, message: string) {
       const errorElement = document.getElementById(`${fieldId}-error`);
       if (errorElement) {
         errorElement.textContent = message;
@@ -159,7 +160,7 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
     }
 
     // Function to clear error messages
-    function clearError(fieldId) {
+    function clearError(fieldId: string) {
       const errorElement = document.getElementById(`${fieldId}-error`);
       if (errorElement) {
         errorElement.textContent = "";
@@ -176,7 +177,7 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
     emailInput.addEventListener("blur", () => validateField(emailInput));
 
     // Validation logic for fields with specific patterns or types (phone and email)
-    function validateField(field) {
+    function validateField(field: HTMLInputElement) {
       clearError(field.id);
       if (field.id === "phone" && field.value) {
         if (!phoneMask.masked.isComplete) {
@@ -197,7 +198,7 @@ import { BUSINESS_NAME, CONTACT_EMAIL, CONTACT_PHONE } from "../site-config";
       let isValid = true;
 
       requiredFields.forEach((fieldId) => {
-        const field = document.getElementById(fieldId);
+        const field = document.getElementById(fieldId) as HTMLInputElement;
         if (field) {
           clearError(fieldId);
           if (!field.value.trim()) {
