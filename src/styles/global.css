@@ -60,7 +60,8 @@ main {
 }
 
 .content-wrapper {
-  padding-top: 4.5rem; /* Adjust this value based on your header's height */
+  padding-top: 5.5rem; /* Adjust this value based on your header's height */
+  padding-bottom: 3rem; /* Added to ensure consistent spacing for the footer */
 }
 
 
