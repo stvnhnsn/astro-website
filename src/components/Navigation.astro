@@ -20,6 +20,17 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
         <li><a href="/contact" class:list={{ active: isActive("/contact") }}>Contact</a></li>
       </ul>
     </nav>
+
+    <div class="hamburger-menu">
+      <button id="menu-toggle" aria-label="Toggle menu">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
     <div class="contact-info">
       <span class="contact-text">Call or Text Us</span>
       <a href={`tel:${CONTACT_PHONE.replace(/[^\d]/g, "")}`} class="contact-phone-number">
@@ -125,30 +136,80 @@ const isActive = (path: string) => currentPath === path || (path === "/" && curr
     margin-top: 0.1rem;
   }
 
-  /* Mobile Responsiveness */
+  .hamburger-menu {
+    display: none;
+  }
+
   @media (max-width: 768px) {
-    .header-content {
-      flex-wrap: wrap;
-      justify-content: center;
-      text-align: center;
+    .main-nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: var(--color-charcoal);
+      position: absolute;
+      top: 90px; /* Adjust based on header height */
+      left: 0;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .business-name {
-      flex-basis: 100%;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
+    .main-nav.is-open {
+      display: flex;
     }
 
     .main-nav ul {
       flex-direction: column;
+      width: 100%;
+      text-align: center;
       gap: 0.5rem;
       flex-basis: 100%;
       margin-bottom: 0.5rem;
     }
 
+    .main-nav li {
+      margin: 0;
+      width: 100%;
+    }
+
+    .main-nav a {
+      display: block;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    .hamburger-menu {
+      display: block;
+    }
+
     .contact-info {
-      flex-basis: 100%;
-      align-items: center;
-      font-size: 1rem;
+      display: none;
+    }
+
+    .header-content {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+
+    .business-name {
+      flex-basis: auto;
+      margin-bottom: 0;
     }
   }
+</style>
+
+<script is:inline>
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    const nav = document.querySelector(".main-nav");
+    nav.classList.toggle("is-open");
+  });
+
+  // Close menu when a navigation link is clicked
+  document.querySelectorAll(".main-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      const nav = document.querySelector(".main-nav");
+      nav.classList.remove("is-open");
+    });
+  });
+</script>
