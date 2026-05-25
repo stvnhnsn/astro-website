@@ -67,10 +67,6 @@ main {
 
 /* Mobile-first adjustments */
 @media (max-width: 768px) {
-  .content-wrapper {
-    padding-top: 170px; /* Adjusted for mobile to ensure content is not cut off by the dropdown menu */
-  }
-
   .hero h1 {
     font-size: 2.5rem;
   }
