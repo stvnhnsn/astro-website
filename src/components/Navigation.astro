@@ -5,7 +5,11 @@ import { BUSINESS_NAME, CONTACT_PHONE, CONTACT_CITY_STATE } from "../site-config
 const currentPath = Astro.url.pathname;
 
 // Function to check if a link is active
-const isActive = (path: string) => currentPath === path || (path === "/" && currentPath === "/index");
+const isActive = (path: string) => {
+  const normalizedCurrentPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+  const normalizedPath = path.endsWith('/') ? path.slice(0, -1) : path;
+  return normalizedCurrentPath === normalizedPath || (normalizedPath === "" && normalizedCurrentPath === "/index");
+};
 ---
 <header class="main-header">
   <div class="header-content">
