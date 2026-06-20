@@ -60,13 +60,17 @@ main {
 }
 
 .content-wrapper {
-  padding-top: 90px; /* Adjusted to match header height for desktop */
+  padding-top: 90px; /* Added to ensure consistent spacing for the header */
   padding-bottom: 3rem; /* Added to ensure consistent spacing for the footer */
 }
 
 
 /* Mobile-first adjustments */
 @media (max-width: 768px) {
+  .content-wrapper {
+    padding-top: 75px; /* Adjusted for header on mobile */
+  }
+
   .hero h1 {
     font-size: 2.5rem;
   }
@@ -82,6 +86,4 @@ main {
   .contact-form-section {
     padding: 0 1rem;
   }
-  
-
 }
