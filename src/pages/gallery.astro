@@ -6,7 +6,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 // 2. Import all images from the gallery folder
 // We use 'eager: true' so they are available immediately
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/*.{jpeg,jpg,png,gif}', { eager: true });
-const galleryImages = Object.values(images).map(img => img.default);
+const galleryImages = Object.values(images).map(img => img.default).sort((a, b) => a.src.localeCompare(b.src));
 ---
 
 <MainLayout title="Gallery">
