@@ -1,0 +1,22 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { BUSINESS_NAME } from "../site-config";
+---
+
+<MainLayout title="Success">
+    <main class="success-page-main">
+        <h1>Thank You!</h1>
+        <p>Your message has been sent.<br />{BUSINESS_NAME} will get in touch with you.</p>
+    </main>
+</MainLayout>
+
+<style>
+    .success-page-main {
+        text-align: center;
+        margin-top: 0;
+    }
+    .success-page-main p {
+        color: var(--color-slate);
+        font-size: 1.1rem;
+    }
+</style>
