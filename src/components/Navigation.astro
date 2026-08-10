@@ -111,16 +111,16 @@ const isActive = (path: string) => {
     position: relative;
   }
 
-    .main-nav a.active,
-    .main-nav a:hover {
+  .main-nav a.active,
+  .main-nav a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .main-nav.is-open a.active {
       color: var(--color-accent);
     }
-
-    @media (max-width: 768px) {
-      .main-nav.is-open a.active {
-        color: var(--color-accent);
-      }
-    }
+  }
 
   .contact-info {
     display: flex;

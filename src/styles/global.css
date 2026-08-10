@@ -69,7 +69,7 @@ main {
 /* Mobile-first adjustments */
 @media (max-width: 768px) {
   .content-wrapper {
-    padding-top: 75px; /* Adjusted for header on mobile */
+    padding-top: 116px; /* Adjust for header on mobile */
   }
 
   .hero h1 {
