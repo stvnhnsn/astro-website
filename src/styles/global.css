@@ -2,6 +2,7 @@
 :root {
   --font-heading: "DM Sans", sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --color-black: #000000;
   --color-charcoal: #333333;
   --color-slate: #708090;
   --color-steely-blue: #2C4763;
@@ -60,7 +61,7 @@ main {
 }
 
 .content-wrapper {
-  padding-top: 90px; /* Added to ensure consistent spacing for the header */
+  padding-top: 116px; /* Added to ensure consistent spacing for the header */
   padding-bottom: 3rem; /* Added to ensure consistent spacing for the footer */
 }
 

@@ -1,5 +1,5 @@
 ---
-import { BUSINESS_NAME, CONTACT_PHONE, CONTACT_CITY_STATE } from "../site-config";
+import { BUSINESS_LOGO, BUSINESS_NAME, CONTACT_PHONE, CONTACT_CITY_STATE } from "../site-config";
 
 // Get the current path
 const currentPath = Astro.url.pathname;
@@ -14,7 +14,8 @@ const isActive = (path: string) => {
 <header class="main-header">
   <div class="header-content">
     <a href="/" class="business-name">
-      <h1>{BUSINESS_NAME}</h1>
+      <!-- Use .src when referencing an imported image object in a standard <img> tag -->
+      <img src={BUSINESS_LOGO.src} alt={BUSINESS_NAME} class="business-logo" />
     </a>
     <nav class="main-nav">
       <ul>
@@ -76,6 +77,13 @@ const isActive = (path: string) => {
     font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: -0.05em;
+  }
+
+  .business-name .business-logo {
+    height: 80px; /* Adjust as needed */
+    width: auto;
+    max-width: 100%; /* Prevents image from overflowing on small mobile screens */
+    vertical-align: middle;
   }
 
   .business-name h1 {

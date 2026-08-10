@@ -5,25 +5,27 @@ import { BUSINESS_NAME } from "../site-config";
 <MainLayout title="Home">
   <main>
     <section class="hero">
-      <h1>Your Vision<br>Our Craft</h1>
-      <p>Building Dreams One Project at a Time</p>
+      <h1>Focused on Quality</h1>
+      <p>Precision remodeling you can trust</p>
       <a href="/contact" class="cta-button">Get a Free Estimate</a>
     </section>
     <section class="about">
       <h2>About {BUSINESS_NAME}</h2>
-      <p>We are a dedicated team of craftsmen passionate about bringing your construction and woodworking visions to life. With years of experience and a commitment to quality, we specialize in remodeling, custom cabinet building, and intricate specialized woodworking projects.</p>
+      <p>We are committed to providing top-level contracting solutions to Marquette County.<br>With years of experience and a dedication to quality, we specialize in residential and commercial remodeling, cabinet building and carpentry services.</p>
+       <p>Licensed & insured builder<br>Member of the <a href="https://www.upbuilders.org/" target="_blank" rel="noopener noreferrer">Home Builders Association of the Upper Peninsula</a></p>
     </section>
   </main>
 </MainLayout>
 
 <style>
   .hero {
-    background-color: #708090;
+    background-color: var(--color-slate);
     color: white;
     text-align: center;
     padding: 2rem 1rem;
   }
   .hero h1 {
+    color: white;
     font-size: 3rem;
     margin-bottom: 1rem;
   }
@@ -33,7 +35,7 @@ import { BUSINESS_NAME } from "../site-config";
   }
   .cta-button {
     background-color: var(--color-accent);
-    color: white;
+    color: var(--color-charcoal);
     padding: 0.8rem 2rem;
     text-decoration: none;
     border-radius: 5px;
@@ -55,7 +57,7 @@ import { BUSINESS_NAME } from "../site-config";
     margin-bottom: 1rem;
   }
   .about p {
-    color: var(--color-slate);
+    color: var(--color-charcoal);
     line-height: 1.6;
   }
 </style>
