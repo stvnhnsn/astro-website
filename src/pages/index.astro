@@ -1,7 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import { BUSINESS_NAME } from "../site-config";
+import {
+  BUSINESS_NAME,
+  HBA_UP_LOGO,
+  LICENSED_INSURED_LOGO,
+} from "../site-config";
 ---
+
 <MainLayout title="Home">
   <main>
     <section class="hero">
@@ -11,8 +16,44 @@ import { BUSINESS_NAME } from "../site-config";
     </section>
     <section class="about">
       <h2>About {BUSINESS_NAME}</h2>
-      <p style="text-align: left;">We are committed to providing top-level contracting solutions to Marquette County. With years of experience and a dedication to quality, we specialize in residential and commercial remodeling, cabinet building and carpentry services.</p>
-      <p>Licensed & insured builder<br>Member of the <a href="https://www.upbuilders.org/" target="_blank" rel="noopener noreferrer">Home Builders Association of the Upper Peninsula</a></p>
+      <p style="text-align: left;">
+        We are committed to providing top-level contracting solutions to
+        Marquette County. With years of experience and a dedication to quality,
+        we specialize in residential and commercial remodeling, cabinet building
+        and carpentry services.
+      </p>
+      <section class="trust-bar">
+        <div class="trust-bar-container">
+          <div class="trust-badge">
+            <a
+              href="https://www.upbuilders.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Home Builders Association of the Upper Peninsula website (opens in a new tab)"
+            >
+              <img
+                src={HBA_UP_LOGO.src}
+                alt="Home Builders Association of the Upper Peninsula Member Logo"
+                title="Home Builders Association of the Upper Peninsula"
+                width="160"
+                height="60"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div class="trust-badge">
+            <img
+              src={LICENSED_INSURED_LOGO.src}
+              alt="Licensed and Insured Builder Badge"
+              title="Licensed and Insured Builder Badge"
+              width="120"
+              height="60"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <p class="trust-caption">Licensed &amp; Insured Builder</p>
+      </section>
     </section>
   </main>
 </MainLayout>
@@ -33,6 +74,7 @@ import { BUSINESS_NAME } from "../site-config";
     font-size: 1.5rem;
     margin-bottom: 2rem;
   }
+
   .cta-button {
     background-color: var(--color-accent);
     color: var(--color-charcoal);
@@ -46,6 +88,7 @@ import { BUSINESS_NAME } from "../site-config";
     background-color: var(--color-accent);
     filter: brightness(1.1);
   }
+
   .about {
     padding: 2rem 1rem;
     max-width: 800px;
@@ -59,5 +102,49 @@ import { BUSINESS_NAME } from "../site-config";
   .about p {
     color: var(--color-charcoal);
     line-height: 1.6;
+  }
+
+  .trust-bar {
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+
+    /* Shrinks the trust bar section strictly to fit contents */
+    width: fit-content;
+    max-width: 100%;
+    margin: 1.5rem auto 0 auto; /* Centers horizontally with space above */
+    text-align: center;
+  }
+  .trust-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap; /* Stacks logos neatly on small screens */
+  }
+  .trust-badge img {
+    max-height: 55px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.9;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+  /* Hover effects for the clickable link and image */
+  .trust-badge a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  .trust-badge a:hover img {
+    opacity: 1;
+    transform: translateY(-2px); /* Subtle hover lift on the logo */
+  }
+  /* Caption styling below the logos */
+  .trust-caption {
+    margin-top: 0.25rem;
+    font-size: 0.8125rem; /* ~13px */
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-charcoal);
   }
 </style>
